@@ -4,6 +4,7 @@
  */
 package com.davidgonzalez.controller;
 
+import com.davidgonzalez.view.BienvenidaView;
 import com.davidgonzalez.view.LoginView;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -53,6 +54,30 @@ public class SceneManager {
         errorPadre.printStackTrace();
         }
         
+    }
+
+    public void ventanaBienvenida(String nombreCompleto) {
+        try {
+            this.escenarioSecundario = new Stage();
+            this.escenarioSecundario.initStyle(StageStyle.TRANSPARENT);
+
+            BienvenidaView bienvenida = new BienvenidaView(nombreCompleto);
+            Scene escenaBienvenida = new Scene(bienvenida, 320, 160);
+            escenaBienvenida.setFill(Color.TRANSPARENT);
+
+            this.escenarioSecundario.setScene(escenaBienvenida);
+            this.escenarioSecundario.centerOnScreen();
+            this.escenarioSecundario.show();
+
+            new BienvenidaController(bienvenida);
+
+        } catch (NullPointerException objetoNulo) {
+            JOptionPane.showMessageDialog(null, "Error de objeto nulo: Ventana Bienvenida");
+            objetoNulo.printStackTrace();
+        } catch (Exception errorPadre) {
+            JOptionPane.showMessageDialog(null, "Error padre: Ventana Bienvenida");
+            errorPadre.printStackTrace();
+        }
     }
 
     public static SceneManager getInstanciaSceneManager() {

@@ -30,7 +30,7 @@ import javafx.scene.paint.Paint;
  *
  * @author david
  */
-public class LoginView extends BorderPane{    
+public  class LoginView extends BorderPane{    
     private static LoginView instanciaLoginView;
     private Button btnCerrarVentana;
     private Label lblTituloVentana;
@@ -45,8 +45,10 @@ public class LoginView extends BorderPane{
     private GridPane formulario;
     private ImageView imgLogoLogin;
     private Button btnIniciarSecion;
+    private String RUTA_ESTILOS = "/com/davidgonzalez/styles/";
     
     private LoginView(){
+        this.getStylesheets().add(RUTA_ESTILOS + "LoginStyles.css");
         this.setPadding(new Insets(10));
         this.setBorder(new Border(
                 new BorderStroke(Paint.valueOf("786341"),
@@ -134,6 +136,70 @@ public class LoginView extends BorderPane{
 
     public void setBarraDeOpciones(HBox barraDeOpciones) {
         this.barraDeOpciones = barraDeOpciones;
+    }
+
+    public VBox getCajaVertical() {
+        return cajaVertical;
+    }
+
+    public void setCajaVertical(VBox cajaVertical) {
+        this.cajaVertical = cajaVertical;
+    }
+
+    public Label getLblNombreUsuario() {
+        return lblNombreUsuario;
+    }
+
+    public void setLblNombreUsuario(Label lblNombreUsuario) {
+        this.lblNombreUsuario = lblNombreUsuario;
+    }
+
+    public TextField getTxtNombreUsuario() {
+        return txtNombreUsuario;
+    }
+
+    public void setTxtNombreUsuario(TextField txtNombreUsuario) {
+        this.txtNombreUsuario = txtNombreUsuario;
+    }
+
+    public Label getLblClave() {
+        return lblClave;
+    }
+
+    public void setLblClave(Label lblClave) {
+        this.lblClave = lblClave;
+    }
+
+    public PasswordField getPwdClave() {
+        return pwdClave;
+    }
+
+    public void setPwdClave(PasswordField pwdClave) {
+        this.pwdClave = pwdClave;
+    }
+
+    public GridPane getFormulario() {
+        return formulario;
+    }
+
+    public void setFormulario(GridPane formulario) {
+        this.formulario = formulario;
+    }
+
+    public ImageView getImgLogoLogin() {
+        return imgLogoLogin;
+    }
+
+    public void setImgLogoLogin(ImageView imgLogoLogin) {
+        this.imgLogoLogin = imgLogoLogin;
+    }
+
+    public Button getBtnIniciarSesion() {
+        return btnIniciarSecion;
+    }
+
+    public void setBtnIniciarSesion(Button btnIniciarSecion) {
+        this.btnIniciarSecion = btnIniciarSecion;
     }
     
     
