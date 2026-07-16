@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public class AuthSistema {
 
     private static AuthSistema instanciaAuthSistema;
-    private static ArrayList<Usuario> listaUsuarios;
+    private ArrayList<Usuario> listaUsuarios;
 
-    public AuthSistema() {
+    private AuthSistema() {
         this.listaUsuarios = new ArrayList<>();
         cargarUsuarios();
     }

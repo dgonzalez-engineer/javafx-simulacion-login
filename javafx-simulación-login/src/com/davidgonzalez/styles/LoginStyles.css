@@ -26,3 +26,15 @@ PasswordField.error{
     -fx-border-width: 2px;
 }
 
+.btn-ingresar {
+    -fx-background-color: #AB7D32;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-ingresar:hover {
+    -fx-background-color: #786341;
+}
+

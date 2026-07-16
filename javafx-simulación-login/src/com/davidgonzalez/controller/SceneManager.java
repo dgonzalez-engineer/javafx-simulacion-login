@@ -9,6 +9,7 @@ import com.davidgonzalez.view.LoginView;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
@@ -60,6 +61,7 @@ public class SceneManager {
         try {
             this.escenarioSecundario = new Stage();
             this.escenarioSecundario.initStyle(StageStyle.TRANSPARENT);
+            this.escenarioSecundario.initModality(Modality.APPLICATION_MODAL);
 
             BienvenidaView bienvenida = new BienvenidaView(nombreCompleto);
             Scene escenaBienvenida = new Scene(bienvenida, 320, 160);

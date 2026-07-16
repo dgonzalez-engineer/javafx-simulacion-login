@@ -18,7 +18,6 @@ public class LoginController {
     private double ejeY;
 
     private final LoginView LOGIN_VIEW;
-    private AuthSistema authSistema = new AuthSistema();
 
     public LoginController(LoginView loginView) {
         this.LOGIN_VIEW = loginView;
@@ -31,22 +30,32 @@ public class LoginController {
         String nombreUsuario = this.LOGIN_VIEW.getTxtNombreUsuario().getText().trim();
         String clave =this.LOGIN_VIEW.getPwdClave().getText().trim();
         
+        limpiarEstilosCampos();
+        
         if(nombreUsuario.isEmpty()){
             this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().add("empty");
             JOptionPane.showMessageDialog(null, "NO DEJES VACIO EL NOMBRE DE USUARIO");
         }else if(clave.isEmpty()){
-            this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().remove("empty");
             this.LOGIN_VIEW.getPwdClave().getStyleClass().add("empty");
         JOptionPane.showMessageDialog(null,"NO DEJES VACIA LA CONTRASEÑA");
         }else{
-            this.LOGIN_VIEW.getPwdClave().getStyleClass().remove("empty");
             //METODO LOGIN 
-            Usuario usuario = authSistema.login(nombreUsuario, clave);
+            Usuario usuario = AuthSistema.getInstanciaAuthSistema().login(nombreUsuario, clave);
             
             if(usuario == null){
+                this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().add("error");
+                this.LOGIN_VIEW.getPwdClave().getStyleClass().add("error");
                 JOptionPane.showMessageDialog(null, "VERIFICA TUS CREDENCIALES");
+            }else{
+                this.escenarioPrincipal.close();
+                SceneManager.getInstanciaSceneManager().ventanaBienvenida(usuario.getNombreCompleto());
             }
         }
+    }
+    
+    private void limpiarEstilosCampos(){
+        this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().removeAll("empty", "error");
+        this.LOGIN_VIEW.getPwdClave().getStyleClass().removeAll("empty", "error");
     }
     
     public void construirAcciones() {

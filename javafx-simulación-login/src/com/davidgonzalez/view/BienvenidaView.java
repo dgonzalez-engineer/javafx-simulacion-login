@@ -37,17 +37,17 @@ public class BienvenidaView extends VBox {
                 new BorderStroke(Paint.valueOf("786341"),
                         BorderStrokeStyle.SOLID,
                         new CornerRadii(20),
-                        new BorderWidths(8))
+                        new BorderWidths(10))
         ));
 
         this.setBackground(new Background(
                 new BackgroundFill(Paint.valueOf("FCF8E6"),
-                        new CornerRadii(20),
+                        new CornerRadii(25),
                         Insets.EMPTY)
         ));
 
         barraDeOpciones = new HBox();
-        barraDeOpciones.setAlignment(Pos.CENTER_RIGHT);
+        barraDeOpciones.setAlignment(Pos.CENTER_LEFT);
 
         btnCerrarVentana = new Button("X");
         btnCerrarVentana.setStyle("-fx-background-color: #AB7D32; -fx-text-fill: white;");

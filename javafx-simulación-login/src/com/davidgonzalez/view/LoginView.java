@@ -21,7 +21,6 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -34,7 +33,7 @@ public  class LoginView extends BorderPane{
     private static LoginView instanciaLoginView;
     private Button btnCerrarVentana;
     private Label lblTituloVentana;
-    private HBox barraDeOpciones;
+    private BorderPane barraDeOpciones;
     
     private VBox cajaVertical;
     private Label lblNombreUsuario;
@@ -62,20 +61,26 @@ public  class LoginView extends BorderPane{
                 new CornerRadii(25),
                 Insets.EMPTY)
         ));
-        barraDeOpciones = new HBox(25);
+        barraDeOpciones = new BorderPane();
         
         btnCerrarVentana = new Button("X");
         btnCerrarVentana.setStyle("-fx-background-color: #AB7D32; -fx-text-fill: white;");
         lblTituloVentana = new Label("JAVAFX - SIMULACIÓN - LOGIN");
+        lblTituloVentana.setStyle("-fx-font-weight: bold; -fx-text-fill: #786341;");
         
-        barraDeOpciones.getChildren().addAll(btnCerrarVentana,lblTituloVentana);
+        barraDeOpciones.setLeft(btnCerrarVentana);
+        barraDeOpciones.setCenter(lblTituloVentana);
+        BorderPane.setAlignment(lblTituloVentana, Pos.CENTER);
         
         this.setTop(barraDeOpciones);
         
         //Objetos del formulario
-        cajaVertical = new VBox();
+        cajaVertical = new VBox(20);
         
         formulario = new GridPane();
+        formulario.setHgap(10);
+        formulario.setVgap(15);
+        formulario.setAlignment(Pos.CENTER);
         
         lblNombreUsuario = new Label("Ingrese su nombre de Usuario");
         txtNombreUsuario = new TextField();
@@ -90,6 +95,7 @@ public  class LoginView extends BorderPane{
         formulario.add(pwdClave, 1, 1);
         
         btnIniciarSecion = new Button("Iniciar Sesion");
+        btnIniciarSecion.getStyleClass().add("btn-ingresar");
         
         imgLogoLogin = new ImageView(new ImageController().getImageLogin("logo"));
         imgLogoLogin.setFitHeight(100);
@@ -130,11 +136,11 @@ public  class LoginView extends BorderPane{
         this.lblTituloVentana = lblTituloVentana;
     }
 
-    public HBox getBarraDeOpciones() {
+    public BorderPane getBarraDeOpciones() {
         return barraDeOpciones;
     }
 
-    public void setBarraDeOpciones(HBox barraDeOpciones) {
+    public void setBarraDeOpciones(BorderPane barraDeOpciones) {
         this.barraDeOpciones = barraDeOpciones;
     }
 
